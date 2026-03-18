@@ -7,7 +7,7 @@ from ia_controller import ControladorIA
 TAMANHO_GRADE = 30
 TAMANHO_CELULA = 30
 NUM_MOEDAS = 20
-FPS = 12  # Quadros por segundo (velocidade da IA)
+FPS = 12 
 
 TAMANHO_JANELA = TAMANHO_GRADE * TAMANHO_CELULA
 ALTURA_HUD = 60
@@ -36,8 +36,8 @@ def desenhar_grade(tela):
         pygame.draw.line(tela, COR_GRADE, (0, y), (TAMANHO_JANELA, y))
 
 
-def desenhar_celula(tela, pos, cor, raio_borda=6):
-    # Desenha uma célula na grade com bordas arredondadas.
+def desenhar_segmento_cobra(tela, pos, cor, raio_borda=6):
+    # Desenha um segmento de cobra na grade.
     x, y = pos
     retangulo = pygame.Rect(
         x * TAMANHO_CELULA + 1,
@@ -52,7 +52,7 @@ def desenhar_cobra(tela, cobra):
     # Desenha a cobra com gradiente e destaque na cabeça.
     for i, segmento in enumerate(cobra):
         if i == 0:
-            desenhar_celula(tela, segmento, COR_COBRA_CABECA, raio_borda=8)
+            desenhar_segmento_cobra(tela, segmento, COR_COBRA_CABECA, raio_borda=8)
             cx_cab, cy_cab = segmento
             cx = cx_cab * TAMANHO_CELULA + TAMANHO_CELULA // 2
             cy = cy_cab * TAMANHO_CELULA + ALTURA_HUD + TAMANHO_CELULA // 2
@@ -62,7 +62,7 @@ def desenhar_cobra(tela, cobra):
             pygame.draw.circle(tela, (0, 0, 0), (cx + 5, cy - 3), 2)
         else:
             cor = COR_COBRA_CORPO if i % 2 == 0 else COR_COBRA_CORPO_ALT
-            desenhar_celula(tela, segmento, cor, raio_borda=5)
+            desenhar_segmento_cobra(tela, segmento, cor, raio_borda=5)
 
 
 def desenhar_moedas(tela, moedas, contador_quadros):

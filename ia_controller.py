@@ -18,9 +18,9 @@ class ControladorIA:
             return None
 
         cabeca = self.jogo.cabeca
-        proxima_pos = caminho[0]
-        dx = proxima_pos[0] - cabeca[0]
-        dy = proxima_pos[1] - cabeca[1]
+        proxima_posicao = caminho[0]
+        dx = proxima_posicao[0] - cabeca[0]
+        dy = proxima_posicao[1] - cabeca[1]
 
         mapa_direcao = {
             (0, -1): Direcao.CIMA,
